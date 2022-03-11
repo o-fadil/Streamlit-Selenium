@@ -38,7 +38,7 @@ def get_chromedriver_path():
 
 def run_selenium():
     name = str()
-    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options, service_log_path='selenium.log')
+    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
     url = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
     driver.get(url)
     xpath = '//*[@class="ui-mainview-block eventpath-wrapper"]'
