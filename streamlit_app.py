@@ -5,6 +5,8 @@ import streamlit as st
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 
 options = Options()
 options.add_argument("--headless")
@@ -36,7 +38,7 @@ def get_chromedriver_path():
 
 def run_selenium():
     name = str()
-    with webdriver.Chrome(options=options, service_log_path='selenium.log') as driver:
+    with webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options, service_log_path='selenium.log') as driver:
         url = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
         driver.get(url)
         xpath = '//*[@class="ui-mainview-block eventpath-wrapper"]'
