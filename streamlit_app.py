@@ -38,15 +38,15 @@ def get_chromedriver_path():
 
 def run_selenium():
     name = str()
-    with webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options, service_log_path='selenium.log') as driver:
-        url = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
-        driver.get(url)
-        xpath = '//*[@class="ui-mainview-block eventpath-wrapper"]'
-        # Wait for the element to be rendered:
-        element = WebDriverWait(driver, 10).until(lambda x: x.find_elements_by_xpath(xpath))
-        # element = driver.find_elements_by_xpath(xpath)
-        name = element[0].get_property('attributes')[0]['name']
-        # print(name)
+    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options, service_log_path='selenium.log')
+    url = "https://www.unibet.fr/sport/football/europa-league/europa-league-matchs"
+    driver.get(url)
+    xpath = '//*[@class="ui-mainview-block eventpath-wrapper"]'
+    # Wait for the element to be rendered:
+    element = WebDriverWait(driver, 10).until(lambda x: x.find_elements_by_xpath(xpath))
+    # element = driver.find_elements_by_xpath(xpath)
+    name = element[0].get_property('attributes')[0]['name']
+    # print(name)
     return name
 
 
